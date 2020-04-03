@@ -1,31 +1,22 @@
-package test.newemail;
+package util;
 
 // Classical Java implementation of singleton  
 // design pattern 
 
 import javax.swing.*;
-public class JFrameSingleton {
+public class JFrameSingleton extends JFrame{
  
-    private static JFrameSingleton myObj;
-     
-    static{
-        myObj = new JFrame("New Email");
-    }
+    /**
+	 * This class is a singleton and contains a serialVersionUID in case of desired serialization.
+	 */
+	private static final long serialVersionUID = 1L;
+	private static final JFrame myObj =  new JFrameSingleton();	
      
     private JFrameSingleton(){
-     
+    	
     }
      
     public static JFrameSingleton getInstance(){
-        return myObj;
-    }
-     
-    public void testMe(){
-        System.out.println("Hey.... it is working!!!");
-    }
-     
-    public static void main(String a[]){
-        JFrameSingleton ms = getInstance();
-        ms.testMe();
-    }
+        return (JFrameSingleton) myObj;
+    }     
 }

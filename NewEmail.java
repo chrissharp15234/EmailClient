@@ -1,31 +1,32 @@
-package test.newemail;
+package sendmail;
 
 import javax.swing.*;
 import java.awt.event.*;  
-import javatutorials.javamail.JavaMailUtil;
+import util.*;
 
 public class NewEmail{  
 
-	public static void main(String[] args) { 
+	public void sendEmail() throws ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException { 
 	
 		//Create Frame
-		JFrame f = new JFrame("New Email"); 				
+		JFrameSingleton f = JFrameSingleton.getInstance();
+		UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
 		
 		//Create TextField
 		final JTextField tf1 = new JTextField("Email");  
-		tf1.setBounds(50,50, 150,20);  
+		tf1.setBounds(100,50, 150,20);  
 		
 		//Create TextField
 		final JTextField tf2 = new JTextField("Subject");  
-		tf2.setBounds(50,150, 150,20);  
+		tf2.setBounds(100,150, 150,20);  
 		
 		//Create TextField
 		final JTextField tf3 = new JTextField("Body");  
-		tf3.setBounds(50,250, 150,20);
+		tf3.setBounds(100,250, 150,20);
 		
 		//Create Button
 		JButton b = new JButton("Click to send email");  
-		b.setBounds(50,350,250,30); 
+		b.setBounds(100,350,250,30); 
 		
 		//Create Action Listener for Button b
 		b.addActionListener(
@@ -37,6 +38,7 @@ public class NewEmail{
 						tf2.setText("");  //Need to add conditional to check if successful
 						tf3.setText("");  //Need to add conditional to check if successful
 						b.setText("Email Sent!");
+						//b.setEnabled(false);
 					}catch(Exception ex){
 						System.out.println("Exception from JavaMailUtil!");
 						ex.printStackTrace();

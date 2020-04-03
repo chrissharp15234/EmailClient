@@ -1,18 +1,21 @@
-package javatutorials.javamail;
+package util;
 
 import java.util.*;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.mail.Authenticator;
 
 public class JavaMailUtil{
-	public static void sendMail(String recipient, String emailSubject, String emailBody) throws Exception{
-		System.out.println("Preparing to send email.");
-		Properties properties = new Properties();
 		
+	public static void sendMail(String recipient, String emailSubject, String emailBody) throws Exception{
+		System.out.println("Preparing to send email.");	
+		
+		Properties properties = new Properties();
 		properties.put("mail.smtp.auth", "true");
 		properties.put("mail.smtp.starttls.enable", "true");
 		properties.put("mail.smtp.host", "smtp.gmail.com");
 		properties.put("mail.smtp.port", "587");
+		
 		
 		String myAccountEmail = "christopher.sharp.1985@gmail.com";
 		String password = "Tata2014!";
@@ -46,5 +49,14 @@ public class JavaMailUtil{
 				System.out.println("Whoops! Looks like something went wrong in the prepareMessage!");
 			}
 			return null;
+	}
+	
+	public static Boolean authenticate(String username, String password) {	
+		
+		if(username.equals("christopher.sharp.1985@gmail.com") && password.equals("Tata2014!")) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 }
